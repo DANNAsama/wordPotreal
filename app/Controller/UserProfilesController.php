@@ -40,11 +40,8 @@ class UserProfilesController extends AppController{
         
         if($this->request->is(array('post', 'put'))){
         	$this->UserProfile->id=$this->request->data['id'];
-<<<<<<< HEAD
-            
-=======
+
             //debug($_FILES);
->>>>>>> a7727a1e5b1ae1fb8b0c11cc41ec9682b2846e7f
             $fileName = $_FILES['image']['name'];
             /*if (!empty($fileName)) {
                 $ext = substr($fileName, -3);
@@ -55,11 +52,9 @@ class UserProfilesController extends AppController{
             if (empty($error)) {
                
                 //画像アップロード
-<<<<<<< HEAD
-                $image = date('YmdHis').$_FILES['image']['name'];
-=======
+
                 $image = date('YmdHis') . $_FILES['image']['name'];
->>>>>>> a7727a1e5b1ae1fb8b0c11cc41ec9682b2846e7f
+
                 //debug($image);
                 move_uploaded_file($_FILES['image']['tmp_name'], '/home/wordpot/www/wordPot/app/webroot/memberpicture/'.$image);
 

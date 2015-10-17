@@ -64,7 +64,7 @@ class AppController extends Controller {
 		if (!empty($user_profile)){
 			$nickname = $user_profile['UserProfile']['nickname'];
 		}
-		debug($user_profile);
+		//debug($user_profile);
 		$this->set(compact('user_profile'));
 		
 	}

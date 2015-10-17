@@ -19,7 +19,7 @@ class UserProfilesController extends AppController{
             'conditions'=>$conditions,
             'order'=>array('modified'=>'desc'))
         );
-		$this->set('userprofile', $userprofile);
+		$this->set('userprofiles', $userprofile);
         $current_id=$this->Auth->user('id');
         $this->set('current_id',$current_id);
 		//$this->set('userword', $userword);

@@ -38,7 +38,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="container">
         <a href="/wordPot/user_words/mypage" class="navbar-brand" href="#"><img style="width:58px;" src="/wordPot/word Pot.png" /></a>
-        <p class="name"><?php echo $user_profiles['UserProfile']['nickname'] ;?>さん、こんにちは！</p>
+        <p class="name"><?php echo $user_profile['UserProfile']['nickname'] ;?>さん、こんにちは！</p>
         
         <ul style="list-style:none;">
 

@@ -32,7 +32,7 @@ class UserProfilesController extends AppController{
         $user_id=$_GET['id'];
         //debug($user_id);
 		$conditions = array('UserProfile.user_id'=>$user_id);
-		$userprofile = $this->UserProfile->find('first', array('conditions'=>$conditions));
+		$userprofile = $this->UserProfile->find('first', array('conditions'=>$conditions,'order'=>array('UserProfile.modified'=>'desc')));
 		$this->set('userprofile', $userprofile);
         //debug($userprofile);
 		

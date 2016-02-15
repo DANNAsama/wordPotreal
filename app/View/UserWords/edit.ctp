@@ -8,8 +8,9 @@
 </script>
 
 <div style="margin-top:120px;">
-  <h3 style="margin:25px 0px 30px 0px; text-decoration: underline;">編集</h3>
+  <h3 style="margin:25px 0px 30px 120px; text-decoration: underline;">編集</h3>
 </div>
+
 <div class="container">
   <form class="form-horizontal" style="margin-bottom:50px;" method="post" action="/wordPot/user_words/view/<?php echo $userwords['UserWord']['id']; ?>">
     <div style="width:50%;margin:auto;">

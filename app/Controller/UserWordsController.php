@@ -67,13 +67,36 @@ class UserWordsController extends AppController{
 	}
 
 	public function edit($id = null){
+		$this->UserWord->id=$id;
 		$userwords = $this->UserWord->findById($id);
 		$this->set(compact('userwords'));
-		$this->UserWord->id=$id;
-		if ($this->request->is('post')) {
-	        if ($this->UserWord->save($this->request->data)) {
-	            $this->Session->setFlash('編集しました！');
+		//debug($userwords['UserWord']);
+		//var_dump($userwords);
+		
+		//debug($this->request->data);
+		/*$editword=array(
+			'UserWord'=>array(
+				'user_id'=>$this->Auth->user('id'),
+				'word_id'=>$userwords['Userword']['word_id'],
+				'study_date'=>date("Y-m-d H:i:s"),
+				'comment'=>$this->request->data['UserWord']['comment'],
+				'rank'=>$this->request->data['UserWord']['rank'],
+				'created'=>date("Y-m-d H:i:s"),
+                'modified'=>date("Y-m-d H:i:s")
+				)
+			);
+		$this->UserWord->create();
+		$this->UserWord->save($editword);*/
+
+		/*if($this->UserWord->save($editword)){
+			$this->Session->setFlash('編集しました！');
 	            return $this->redirect(array('action'=>'view'));
+		}*/
+		if ($this->request->is('post')) {
+			$this->UserWord->create();
+	        if ($this->UserWord->save($this->request->data,$validate=false)) {
+	            $this->Session->setFlash('編集しました！');
+	            //return $this->redirect(array('action'=>'view'));
 	      	} else {
 	      		$this->Session->setFlash('編集に失敗しました！');
 	      	}
@@ -92,9 +115,9 @@ class UserWordsController extends AppController{
 	    	$response_xml_data = file_get_contents($url);
 	    	$data1 = simplexml_load_string($response_xml_data);
 	    	$data2 = json_decode(json_encode($data1),true); //普通の配列の形にする
- 	 		debug($data2);
+ 	 		//debug($data2);
 			
-	 		debug($data2['TitleList']['DicItemTitle']['ItemID']);
+	 		//debug($data2['TitleList']['DicItemTitle']['ItemID']);
 
 	 		$itemID = $data2['TitleList']['DicItemTitle']['ItemID'];
 
@@ -102,7 +125,7 @@ class UserWordsController extends AppController{
 	 		$result_xml_data = file_get_contents($item_url);
 	    	$result1 = simplexml_load_string($result_xml_data);
 	    	$result2 = json_decode(json_encode($result1),true);
-	 		debug($result2);
+	 		//debug($result2);
 			
 		} catch (Exception $e) {
 			

@@ -5,10 +5,11 @@
     });
   });
 </script>
-<div style="margin: 0 auto;">
+<div style="margin: 120px;">
   <h3 style="margin:25px 0px 30px 0px; text-decoration: underline;">単語詳細ページ</h3>
-  <div style="width:80%;">
-    <form action="/wordPot/user_words/edit/<?php echo $userwords['UserWord']['id']?>">
+  <!--<div style="width:80%;">-->
+  <div>
+    <form action="/wordPot/user_words/edit/<?php echo $userwords['UserWord']['id']; ?>">
     
     <div style="argin-left:auto;">
       <div>

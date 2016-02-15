@@ -13,6 +13,7 @@ class UserProfilesController extends AppController{
 	public function index($user_id = null){
 		//set('送信する変数名',$this->Model名->find('条件'));
         $user_id=$_GET['id'];
+        $this->set('user_id',$user_id);
         //debug($user_id);
 		$conditions = array('UserProfile.user_id'=>$user_id);
 		$userprofile = $this->UserProfile->find('first', array(
@@ -35,6 +36,7 @@ class UserProfilesController extends AppController{
 		$userprofile = $this->UserProfile->find('first', array('conditions'=>$conditions,'order'=>array('UserProfile.modified'=>'desc')));
 		$this->set('userprofile', $userprofile);
         //debug($userprofile);
+
 		
 	
         
@@ -56,7 +58,7 @@ class UserProfilesController extends AppController{
                 $image = date('YmdHis') . $_FILES['image']['name'];
 
                 //debug($image);
-                move_uploaded_file($_FILES['image']['tmp_name'], '/home/wordpot/www/wordPot/app/webroot/memberpicture/'.$image);
+                move_uploaded_file($_FILES['image']['tmp_name'], '/home/maitake/www/wordPot/app/webroot/memberpicture/'.$image);
 
                 $this->request->data['UserProfile']['picture'] = $image; //画像をデータベースに格納
                 
@@ -64,6 +66,7 @@ class UserProfilesController extends AppController{
 
             $editprofile=array(
                 'UserProfile'=>array(
+                    'id'=>$userprofile['UserProfile']['id'],
                     'user_id'=>$this->Auth->user('id'),
                     'nickname'=>$this->request->data['UserProfile']['nickname'],
                     'rank'=>'0',
@@ -74,10 +77,10 @@ class UserProfilesController extends AppController{
                 )
             );
 
-            $this->UserProfile->create();
+            //$this->UserProfile->create();
             if($this->UserProfile->save($editprofile)){
                 //$this->Session->setFlash(__('更新されました'));
-                return $this->redirect('http://wordpot.sakura.ne.jp/wordPot/user_profiles/index?id='.$user_id);
+                $this->redirect(array('action' => 'http://maitake.sakura.ne.jp/wordPot/user_profiles/index?id='.$user_id));
             }
         }
  
